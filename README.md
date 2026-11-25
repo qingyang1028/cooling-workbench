@@ -4,6 +4,12 @@ A bilingual React prototype for investigating a cooling-loop failure in a GPU ha
 
 [Live demo in English](https://cooling-workbench.pages.dev/?lang=en) · [中文版](https://cooling-workbench.pages.dev/?lang=zh) · [Design system](https://cooling-workbench.pages.dev/design-system/?lang=en) · [中文说明](README.zh-CN.md)
 
+## Design decision
+
+Operators need to decide which equipment to investigate first. The interface brings together the P3 pump-stop alert, cooling-loop and rack relationships, and GPU temperature evidence to support that decision.
+
+The fault overview displays a suggested relationship generated from the prototype’s predefined scenario. The links between the switch alerts and the cooling fault remain unconfirmed. At 03:06, the interface displays the exercise’s confirmed cause; earlier snapshots show only the information available at those times.
+
 ## Run locally
 
 Requires Node.js 22.12+ or 24 and npm. From this directory:
