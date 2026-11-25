@@ -1,0 +1,31 @@
+# 科尔文 · 设备监控
+React、Ant Design 深色主题、Vite。本地使用 Node.js 22.12+ 或 24。
+在线体验：[English](https://cooling-workbench.pages.dev/?lang=en) · [中文](https://cooling-workbench.pages.dev/?lang=zh)。
+
+在项目目录运行 `npm ci` 安装依赖，再运行 `npm run dev` 并打开终端显示的本地地址。用 `npm run build` 生成 `dist`，用 `npm run preview` 预览静态构建。当前在线原型通过 Cloudflare Pages 独立项目 `cooling-workbench` 发布。
+
+右上角可切换中文与 English。链接加上 `?lang=en` 可直接打开英文版，`?lang=zh` 可直接打开中文版。两个语言共用页面、交互、样式和模拟数据。新增或修改界面文案时，在 `src/locale.js` 的同一条记录中维护中文和英文。
+
+设计体系目录在 `public/design-system/index.html`，构建时会随项目复制到 `dist/design-system/`。其 Token 和组件截图是制作时的静态快照，修改项目样式后需同步更新目录内容。
+
+## 体验
+默认 02:40。查看 P3 停泵告警，选择 02:43 或 02:52 查看累计告警。点回路 3 看流量和转速，点 R21 展开 30 个槽位，再点 G01 在右侧查看温度、训练速度和对应记录。回路 3 详情中可标记为优先调查并确认。场景快照支持回溯，切回标记时刻以前会隐藏该次模拟操作。点击页面空白处返回故障总览。
+
+## 数据
+src/scenario.js 可重复生成同一份 340 条记录。包含全部六条题给记录，共有 1 条停泵、300 条温度、17 条训练降速、20 条风扇全速及 2 条网络端口告警。交换机端口错误计入警告，明细独立标注位置与故障关联待核实。顶部与明细共用严重、警告、提示三个级别。每架第 5 块不同 GPU 报高温时记录风扇全速，持续 5 分钟补一条提醒。严重为 P3 停泵，警告包括 GPU 高温、训练降速、首次风扇全速和交换机端口错误，提示为风扇持续全速提醒。告警明细支持级别和类型组合筛选。匹配的严重条目在每页置顶，其余按时间倒序。02:52 后未补充新告警，03:06 才显示已确认原因与 64 个失败任务。
+
+仪表为演示量程。训练速度针对固定负载，以样本/秒表示。温度仪表显示最近的已知告警读数，缺少观测时使用模拟遥测。读数来源和假设在数据说明中列出，原始告警的时间与来源保留在证据和明细中。告警来源在表中区分，扩展的告警分布和设备归属假设可见数据脚本。
+
+值班头像为演示配图，摄影 [Michael Dam / Unsplash](https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k)。
+
+## 视觉组件
+
+全局样式值集中在 `src/tokens.css`。调整品牌色、告警色、表面填充、字体、间距或圆角时从这里开始。`src/consoleTheme.js` 将同一套值提供给 Ant Design 的按钮、选择框、分页和弹窗。
+
+`src/ConsoleUI.jsx` 提供以下共用组件：
+
+- `ModuleHeader` 接收图标、上下两行标题、可选计数和右侧操作区，用于拓扑、调查详情及告警明细。
+- `SeverityCard` 和 `SeverityLabel` 使用相同的三级告警定义。严重、警告、提示分别使用红色、琥珀色和灰蓝色。
+- `DeviceNode` 接收设备状态和独立的选中状态。硬件异常保留故障色，当前查看的节点叠加品牌色描边。回路、机架与 GPU 槽位共享这套规则。
+- `ConsoleModal`、`CloseButton` 和 `CloseIcon` 提供共用弹窗和关闭操作。
+- `Icon` 和 `SwitchLink` 提供共用图标及交换机详情入口。

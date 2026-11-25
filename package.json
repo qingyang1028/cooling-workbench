@@ -1,0 +1,8 @@
+{
+  "name": "cooling-workbench",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build --base=./", "preview": "vite preview" },
+  "dependencies": { "antd": "^6.0.0", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "devDependencies": { "vite": "^7.0.0" }
+}
