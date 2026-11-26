@@ -7,6 +7,8 @@ React、Ant Design 深色主题、Vite。本地使用 Node.js 22.12+ 或 24。
 右上角可切换中文与 English。链接加上 `?lang=en` 可直接打开英文版，`?lang=zh` 可直接打开中文版。两个语言共用页面、交互、样式和模拟数据。新增或修改界面文案时，在 `src/locale.js` 的同一条记录中维护中文和英文。
 
 设计体系目录在 `public/design-system/index.html`，构建时会随项目复制到 `dist/design-system/`。其 Token 和组件截图是制作时的静态快照，修改项目样式后需同步更新目录内容。
+<img width="2800" height="1540" alt="运行与操作说明图" src="https://github.com/user-attachments/assets/52b7972c-a806-47c9-b325-f44d35d53a01" />
+
 
 ## 设计决策
 
