@@ -4,6 +4,10 @@ A bilingual React prototype for investigating a cooling-loop failure in a GPU ha
 
 [Live demo in English](https://cooling-workbench.pages.dev/?lang=en) · [中文版](https://cooling-workbench.pages.dev/?lang=zh) · [Design system](https://cooling-workbench.pages.dev/design-system/?lang=en) · [中文说明](README.zh-CN.md)
 
+
+<img width="2800" height="1540" alt="运行与操作说明图" src="https://github.com/user-attachments/assets/8e9a0046-d0fe-4d99-bf67-1e38b246b5ae" />
+<img width="2800" height="1540" alt="Online Walkthrough" src="https://github.com/user-attachments/assets/24e4a2dd-348f-4411-82b2-2e2b864f049a" />
+
 ## Design decision
 
 Operators need to decide which equipment to investigate first. The interface brings together the P3 pump-stop alert, cooling-loop and rack relationships, and GPU temperature evidence to support that decision.
